@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Myinstants Clone</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .stop-button {
+      background-color: #ff4444;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+    .stop-button:hover {
+      background-color: #cc0000;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1>Axel Board</h1>
+      <div>
+        <div class="search-container" style="display: inline-block;">
+          <input type="text" id="search" placeholder="🔍 Recherche...">
+        </div>
+        <button id="stop-button" class="stop-button">STOP</button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="buttons-container" id="buttons-container">
+      <!-- Boutons générés par JS -->
+    </div>
+  </main>
+  <script>
+    // Liste des sons (nom + fichier)
+    const sounds = [
+      { name: "Sahur song", file: "BRUIT_DE_PET_GRAS.mp3", color: "red" },
+      { name: "Shimmy ya", file: "shimmy.mp3", color: "red" },
+      { name: "Réveil bylihan", file: "reveil_bylihan.mp3", color: "blue" },
+      { name: "Fart", file: "fart.mp3", color: "brown" },
+    ];
+    const container = document.getElementById("buttons-container");
+    let currentAudio = null;
+
+    // Fonction de création des boutons
+    function createButtons(list) {
+      container.innerHTML = ""; // Efface avant de réafficher
+      list.forEach(sound => {
+        const btn = document.createElement("div");
+        btn.className = "sound-button " + sound.color;
+        btn.innerHTML = `
+          <div class="button-top"></div>
+          <p>${sound.name}</p>
+        `;
+        btn.addEventListener("click", () => {
+          // Arrête le son en cours s'il existe
+          if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+          }
+          // Crée et lance le nouveau son
+          currentAudio = new Audio("sons/" + sound.file);
+          currentAudio.play();
+        });
+        container.appendChild(btn);
+      });
+    }
+    createButtons(sounds);
+
+    // Bouton STOP
+    document.getElementById("stop-button").addEventListener("click", () => {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+    });
+
+    // Barre de recherche fonctionnelle
+    document.getElementById("search").addEventListener("input", (e) => {
+      const query = e.target.value.toLowerCase();
+      const filtered = sounds.filter(s => s.name.toLowerCase().includes(query));
+      createButtons(filtered);
+    });
+  </script>
+</body>
+</html>

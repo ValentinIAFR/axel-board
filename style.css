@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0d1b2a;
+  color: white;
+  text-align: center;
+}
+
+header {
+  background-color: #152238;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.8em;
+}
+
+.search-container {
+  flex: 1;
+  text-align: right;
+  min-width: 250px;
+}
+
+#search {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  width: 220px;
+  font-size: 1em;
+}
+
+main {
+  padding: 30px;
+}
+
+.buttons-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 25px;
+  justify-items: center;
+}
+
+.sound-button {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: relative;
+  transition: transform 0.1s ease;
+}
+
+.sound-button:hover {
+  transform: scale(1.1);
+}
+
+.sound-button .button-top {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 0 4px 10px rgba(255,255,255,0.2);
+}
+
+.sound-button p {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #cfd8dc;
+}
+
+/* Couleurs des boutons */
+.red .button-top {
+  background: radial-gradient(circle at top, #ff3b3b, #b30000);
+}
+.blue .button-top {
+  background: radial-gradient(circle at top, #4aa3ff, #0044aa);
+}
+.green .button-top {
+  background: radial-gradient(circle at top, #53ff7d, #008a33);
+}
+.brown .button-top {
+  background: radial-gradient(circle at top, #d68b4e, #663300);
+}
+.black .button-top {
+  background: radial-gradient(circle at top, #333, #000);
+}
+.white .button-top {
+  background: radial-gradient(circle at top, #fff, #bbb);
+}
+
+/* Bouton STOP */
+.stop-button {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    margin-left: 10px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.stop-button:hover {
+    background-color: #cc0000;
+}
+
+/* Conteneur du header pour aligner les éléments */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+/* Conteneur de recherche et bouton STOP */
+.search-container {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.search-container input {
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
